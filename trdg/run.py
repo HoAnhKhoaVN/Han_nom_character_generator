@@ -273,7 +273,7 @@ def parse_arguments():
         type=margins,
         nargs="?",
         help="Define the margins around the text when rendered. In pixels",
-        default=(5, 5, 5, 5),
+        default=(1, 1, 1, 1),
     )
     parser.add_argument(
         "-fi",
@@ -377,8 +377,9 @@ def main():
         fonts = [
             os.path.join(args.font_dir, p)
             for p in os.listdir(args.font_dir)
-            if os.path.splitext(p)[1] == ".ttf"
+            if os.path.splitext(p)[1] in [".ttf", '.ttc', '.otf']
         ]
+        print(f"Font: {fonts}")
     elif args.font:
         if os.path.isfile(args.font):
             fonts = [args.font]
@@ -435,14 +436,17 @@ def main():
     string_count = len(strings)
 
     p = Pool(args.thread_count)
+
+
+    print(f"text color: {args.text_color}")
     for _ in tqdm(
         p.imap_unordered(
             FakeTextDataGenerator.generate_from_tuple,
             zip(
-                [i for i in range(0, string_count)],
-                strings,
-                [fonts[rnd.randrange(0, len(fonts))] for _ in range(0, string_count)],
-                [args.output_dir] * string_count,
+                [i for i in range(0, string_count)],                                        # index
+                strings,                                                                    # text
+                [fonts[rnd.randrange(0, len(fonts))] for _ in range(0, string_count)],      # font
+                [args.output_dir] * string_count,                                           # output directory
                 [args.format] * string_count,
                 [args.extension] * string_count,
                 [args.skew_angle] * string_count,

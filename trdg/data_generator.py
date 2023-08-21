@@ -11,6 +11,13 @@ try:
 except ImportError as e:
     print("Missing modules for handwritten text generation.")
 
+from pickle import load
+TGT_DS ='D:/Master/OCR_Nom/dataset/dataset_han_nom_demo/train/'
+
+# region Load dictionary Nom script to Unicode
+with open('nom2unicode.pkl', 'rb') as f:
+    nom2unicode = load(f)
+# endregion
 
 class FakeTextDataGenerator(object):
     @classmethod
@@ -249,6 +256,12 @@ class FakeTextDataGenerator(object):
         # Generate name for resulting image #
         #####################################
         # We remove spaces if space_width == 0
+
+        # region Nom to Unicode
+        _unicode = nom2unicode[text]
+        # endregion
+
+
         if space_width == 0:
             text = text.replace(" ", "")
         if name_format == 0:
@@ -257,6 +270,10 @@ class FakeTextDataGenerator(object):
             name = "{}_{}".format(str(index), text)
         elif name_format == 2:
             name = str(index)
+        elif name_format == 3:
+            
+            # get number image in target folder
+            name = os.path.join(f"{_unicode}__{str(index).zfill(7)}__synth")
         else:
             print("{} is not a valid name format. Using default.".format(name_format))
             name = "{}_{}".format(text, str(index))
@@ -267,9 +284,12 @@ class FakeTextDataGenerator(object):
         box_name = "{}_boxes.txt".format(name)
         tess_box_name = "{}.box".format(name)
 
-        # Save the image
+        ##################
+        # Save the image #
+        ##################
         if out_dir is not None:
-            final_image.save(os.path.join(out_dir, image_name))
+            tgt_path = os.path.join(out_dir,_unicode, image_name)
+            final_image.save(tgt_path) # Save image
             if output_mask == 1:
                 final_mask.save(os.path.join(out_dir, mask_name))
             if output_bboxes == 1:

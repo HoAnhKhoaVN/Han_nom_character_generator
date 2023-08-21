@@ -1,3 +1,11 @@
+# custom data src
+trdg/handwritten_model
+trdg/han_nom
+samples
+custom
+trdg/texts
+*.ipynb
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

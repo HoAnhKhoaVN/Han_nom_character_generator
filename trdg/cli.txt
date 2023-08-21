@@ -1,0 +1,182 @@
+  -h, --help            show this help message and exit
+  --output_dir [OUTPUT_DIR]
+                        The output directory
+  -i [INPUT_FILE], --input_file [INPUT_FILE]
+                        When set, this argument uses a specified text file as source for the text
+  -l [LANGUAGE], --language [LANGUAGE]
+                        The language to use, should be fr (French), en (English), es (Spanish), de (German), ar (Arabic), cn (Chinese), ja (Japanese) or hi (Hindi)
+  -c [COUNT], --count [COUNT]
+                        The number of images to be created.
+  -rs, --random_sequences
+                        Use random sequences as the source text for the generation. Set '-let','-num','-sym' to use letters/numbers/symbols. If none specified, using all three.
+  -let, --include_letters
+                        Define if random sequences should contain letters. Only works with -rs
+  -num, --include_numbers
+                        Define if random sequences should contain numbers. Only works with -rs
+  -sym, --include_symbols
+                        Define if random sequences should contain symbols. Only works with -rs
+  -w [LENGTH], --length [LENGTH]
+                        Define how many words should be included in each generated sample. If the text source is Wikipedia, this is the MINIMUM length
+  -r, --random          Define if the produced string will have variable word count (with --length being the maximum)
+  -f [FORMAT], --format [FORMAT]
+                        Define the height of the produced images if horizontal, else the width
+  -t [THREAD_COUNT], --thread_count [THREAD_COUNT]
+                        Define the number of thread to use for image generation
+  -e [EXTENSION], --extension [EXTENSION]
+                        Define the extension to save the image with
+  -k [SKEW_ANGLE], --skew_angle [SKEW_ANGLE]
+                        Define skewing angle of the generated text. In positive degrees
+  -rk, --random_skew    When set, the skew angle will be randomized between the value set with -k and it's opposite
+  -wk, --use_wikipedia  Use Wikipedia as the source text for the generation, using this paremeter ignores -r, -n, -s
+  -bl [BLUR], --blur [BLUR]
+                        Apply gaussian blur to the resulting sample. Should be an integer defining the blur radius
+  -rbl, --random_blur   When set, the blur radius will be randomized between 0 and -bl.
+  -b [BACKGROUND], --background [BACKGROUND]
+                        Define what kind of background to use. 0: Gaussian Noise, 1: Plain white, 2: Quasicrystal, 3: Image
+  -hw, --handwritten    Define if the data will be "handwritten" by an RNN
+  -na NAME_FORMAT, --name_format NAME_FORMAT
+                        Define how the produced files will be named. 0: [TEXT]_[ID].[EXT], 1: [ID]_[TEXT].[EXT] 2: [ID].[EXT] + one file labels.txt containing id-to-label mappings
+  -om OUTPUT_MASK, --output_mask OUTPUT_MASK
+                        Define if the generator will return masks for the text
+  -obb OUTPUT_BBOXES, --output_bboxes OUTPUT_BBOXES
+                        Define if the generator will return bounding boxes for the text, 1: Bounding box file, 2: Tesseract format
+  -d [DISTORSION], --distorsion [DISTORSION]
+PS D:\Master\OCR_Nom\TextRecognitionDataGenerator\trdg> python3 run.py --output_dir demo -i texts/test.txt -l cn -c 4 -b 3 -id bg_han_nom
+>> 
+Missing modules for handwritten text generation.
+  0%|                                                                                                                                                                                                                                                                                        | 0/4 [00:00<?, ?it/s]Missing modules for handwritten text generation.
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4/4 [00:01<00:00,  2.81it/s]
+PS D:\Master\OCR_Nom\TextRecognitionDataGenerator\trdg> python3 run.py -h                                                                
+Missing modules for handwritten text generation.
+usage: run.py [-h] [--output_dir [OUTPUT_DIR]] [-i [INPUT_FILE]] [-l [LANGUAGE]] -c [COUNT] [-rs] [-let] [-num] [-sym] [-w [LENGTH]] [-r] [-f [FORMAT]] [-t [THREAD_COUNT]] [-e [EXTENSION]] [-k [SKEW_ANGLE]] [-rk] [-wk] [-bl [BLUR]] [-rbl] [-b [BACKGROUND]] [-hw] [-na NAME_FORMAT] [-om OUTPUT_MASK]   
+              [-obb OUTPUT_BBOXES] [-d [DISTORSION]] [-do [DISTORSION_ORIENTATION]] [-wd [WIDTH]] [-al [ALIGNMENT]] [-or [ORIENTATION]] [-tc [TEXT_COLOR]] [-sw [SPACE_WIDTH]] [-cs [CHARACTER_SPACING]] [-m [MARGINS]] [-fi] [-ft [FONT]] [-fd [FONT_DIR]] [-id [IMAGE_DIR]] [-ca [CASE]] [-dt [DICT]] [-ws]
+              [-stw [STROKE_WIDTH]] [-stf [STROKE_FILL]] [-im [IMAGE_MODE]]
+
+Generate synthetic text data for text recognition.
+
+options:
+  -h, --help            show this help message and exit
+  --output_dir [OUTPUT_DIR]
+                        The output directory
+  -i [INPUT_FILE], --input_file [INPUT_FILE]
+                        When set, this argument uses a specified text file as source for the text
+  -l [LANGUAGE], --language [LANGUAGE]
+                        The language to use, should be fr (French), en (English), es (Spanish), de (German), ar (Arabic), cn (Chinese), ja (Japanese) or hi (Hindi)
+  -c [COUNT], --count [COUNT]
+                        The number of images to be created.
+  -rs, --random_sequences
+                        Use random sequences as the source text for the generation. Set '-let','-num','-sym' to use letters/numbers/symbols. If none specified, using all three.
+  -let, --include_letters
+                        Define if random sequences should contain letters. Only works with -rs
+  -num, --include_numbers
+                        Define if random sequences should contain numbers. Only works with -rs
+  -sym, --include_symbols
+                        Define if random sequences should contain symbols. Only works with -rs
+  -w [LENGTH], --length [LENGTH]
+                        Define how many words should be included in each generated sample. If the text source is Wikipedia, this is the MINIMUM length
+  -r, --random          Define if the produced string will have variable word count (with --length being the maximum)
+  -f [FORMAT], --format [FORMAT]
+                        Define the height of the produced images if horizontal, else the width
+  -t [THREAD_COUNT], --thread_count [THREAD_COUNT]
+                        Define the number of thread to use for image generation
+  -e [EXTENSION], --extension [EXTENSION]
+                        Define the extension to save the image with
+  -k [SKEW_ANGLE], --skew_angle [SKEW_ANGLE]
+                        Define skewing angle of the generated text. In positive degrees
+  -rk, --random_skew    When set, the skew angle will be randomized between the value set with -k and it's opposite
+  -wk, --use_wikipedia  Use Wikipedia as the source text for the generation, using this paremeter ignores -r, -n, -s
+  -bl [BLUR], --blur [BLUR]
+                        Apply gaussian blur to the resulting sample. Should be an integer defining the blur radius
+  -rbl, --random_blur   When set, the blur radius will be randomized between 0 and -bl.
+  -b [BACKGROUND], --background [BACKGROUND]
+                        Define what kind of background to use. 0: Gaussian Noise, 1: Plain white, 2: Quasicrystal, 3: Image
+  -hw, --handwritten    Define if the data will be "handwritten" by an RNN
+  -na NAME_FORMAT, --name_format NAME_FORMAT
+                        Define how the produced files will be named. 0: [TEXT]_[ID].[EXT], 1: [ID]_[TEXT].[EXT] 2: [ID].[EXT] + one file labels.txt containing id-to-label mappings
+  -om OUTPUT_MASK, --output_mask OUTPUT_MASK
+                        Define if the generator will return masks for the text
+  -obb OUTPUT_BBOXES, --output_bboxes OUTPUT_BBOXES
+PS D:\Master\OCR_Nom\TextRecognitionDataGenerator\trdg> python3 run.py -h
+Missing modules for handwritten text generation.
+usage: run.py [-h] [--output_dir [OUTPUT_DIR]] [-i [INPUT_FILE]] [-l [LANGUAGE]] -c [COUNT] [-rs] [-let] [-num] [-sym] [-w [LENGTH]] [-r] [-f [FORMAT]] [-t [THREAD_COUNT]] [-e [EXTENSION]] [-k [SKEW_ANGLE]] [-rk] [-wk] [-bl [BLUR]] [-rbl] [-b [BACKGROUND]] [-hw] [-na NAME_FORMAT] [-om OUTPUT_MASK]   
+              [-obb OUTPUT_BBOXES] [-d [DISTORSION]] [-do [DISTORSION_ORIENTATION]] [-wd [WIDTH]] [-al [ALIGNMENT]] [-or [ORIENTATION]] [-tc [TEXT_COLOR]] [-sw [SPACE_WIDTH]] [-cs [CHARACTER_SPACING]] [-m [MARGINS]] [-fi] [-ft [FONT]] [-fd [FONT_DIR]] [-id [IMAGE_DIR]] [-ca [CASE]] [-dt [DICT]] [-ws]
+              [-stw [STROKE_WIDTH]] [-stf [STROKE_FILL]] [-im [IMAGE_MODE]]
+
+Generate synthetic text data for text recognition.
+
+options:
+  -h, --help            show this help message and exit
+  --output_dir [OUTPUT_DIR]
+                        The output directory
+  -i [INPUT_FILE], --input_file [INPUT_FILE]
+                        When set, this argument uses a specified text file as source for the text
+  -l [LANGUAGE], --language [LANGUAGE]
+                        The language to use, should be fr (French), en (English), es (Spanish), de (German), ar (Arabic), cn (Chinese), ja (Japanese) or hi (Hindi)
+  -c [COUNT], --count [COUNT]
+                        The number of images to be created.
+  -rs, --random_sequences
+                        Use random sequences as the source text for the generation. Set '-let','-num','-sym' to use letters/numbers/symbols. If none specified, using all three.
+  -let, --include_letters
+                        Define if random sequences should contain letters. Only works with -rs
+  -num, --include_numbers
+                        Define if random sequences should contain numbers. Only works with -rs
+  -sym, --include_symbols
+                        Define if random sequences should contain symbols. Only works with -rs
+  -w [LENGTH], --length [LENGTH]
+                        Define how many words should be included in each generated sample. If the text source is Wikipedia, this is the MINIMUM length
+  -r, --random          Define if the produced string will have variable word count (with --length being the maximum)
+  -f [FORMAT], --format [FORMAT]
+                        Define the height of the produced images if horizontal, else the width
+  -t [THREAD_COUNT], --thread_count [THREAD_COUNT]
+                        Define the number of thread to use for image generation
+  -e [EXTENSION], --extension [EXTENSION]
+                        Define the extension to save the image with
+  -k [SKEW_ANGLE], --skew_angle [SKEW_ANGLE]
+                        Define skewing angle of the generated text. In positive degrees
+  -rk, --random_skew    When set, the skew angle will be randomized between the value set with -k and it's opposite
+  -wk, --use_wikipedia  Use Wikipedia as the source text for the generation, using this paremeter ignores -r, -n, -s
+  -bl [BLUR], --blur [BLUR]
+                        Apply gaussian blur to the resulting sample. Should be an integer defining the blur radius
+  -rbl, --random_blur   When set, the blur radius will be randomized between 0 and -bl.
+  -b [BACKGROUND], --background [BACKGROUND]
+                        Define what kind of background to use. 0: Gaussian Noise, 1: Plain white, 2: Quasicrystal, 3: Image
+  -hw, --handwritten    Define if the data will be "handwritten" by an RNN
+  -na NAME_FORMAT, --name_format NAME_FORMAT
+                        Define how the produced files will be named. 0: [TEXT]_[ID].[EXT], 1: [ID]_[TEXT].[EXT] 2: [ID].[EXT] + one file labels.txt containing id-to-label mappings
+  -om OUTPUT_MASK, --output_mask OUTPUT_MASK
+                        Define if the generator will return masks for the text
+  -obb OUTPUT_BBOXES, --output_bboxes OUTPUT_BBOXES
+  -d [DISTORSION], --distorsion [DISTORSION]
+  -do [DISTORSION_ORIENTATION], --distorsion_orientation [DISTORSION_ORIENTATION]
+                        Define the distorsion's orientation. Only used if -d is specified. 0: Vertical (Up and down), 1: Horizontal (Left and Right), 2: Both
+  -wd [WIDTH], --width [WIDTH]
+                        Define the width of the resulting image. If not set it will be the width of the text + 10. If the width of the generated text is bigger that number will be used
+  -al [ALIGNMENT], --alignment [ALIGNMENT]
+  -or [ORIENTATION], --orientation [ORIENTATION]
+                        Define the orientation of the text. 0: Horizontal, 1: Vertical
+  -tc [TEXT_COLOR], --text_color [TEXT_COLOR]
+                        Define the text's color, should be either a single hex color or a range in the ?,? format.
+  -sw [SPACE_WIDTH], --space_width [SPACE_WIDTH]
+                        Define the width of the spaces between words. 2.0 means twice the normal space width
+  -cs [CHARACTER_SPACING], --character_spacing [CHARACTER_SPACING]
+                        Define the width of the spaces between characters. 2 means two pixels
+  -m [MARGINS], --margins [MARGINS]
+                        Define the margins around the text when rendered. In pixels
+  -fi, --fit            Apply a tight crop around the rendered text
+  -ft [FONT], --font [FONT]
+                        Define font to be used
+  -fd [FONT_DIR], --font_dir [FONT_DIR]
+                        Define a font directory to be used
+  -id [IMAGE_DIR], --image_dir [IMAGE_DIR]
+                        Define an image directory to use when background is set to image
+  -ca [CASE], --case [CASE]
+                        Generate upper or lowercase only. arguments: upper or lower. Example: --case upper
+  -dt [DICT], --dict [DICT]
+                        Define the dictionary to be used
+  -ws, --word_split     Split on words instead of on characters (preserves ligatures, no character spacing)
+  -stw [STROKE_WIDTH], --stroke_width [STROKE_WIDTH]
+                        Define the width of the strokes
+  -stf [STROKE_FILL], --stroke_fill [STROKE_FILL]
+                        Define the color of the contour of the strokes, if stroke_width is bigger than 0
+  -im [IMAGE_MODE], --image_mode [IMAGE_MODE]
+                        Define the image mode to be used. RGB is default, L means 8-bit grayscale images, 1 means 1-bit binary images stored with one pixel per byte, etc.

@@ -1,0 +1,1 @@
+python3 run.py --output_dir D:\\Master\\OCR_Nom\\dataset\\dataset_han_nom_demo\\train\\ -i label_for_generate.txt -l cn -c 973768 -b 3 -id bg_han_nom -wd 32 --font_dir fonts/han_nom -stw 1 --random_blur -bl 1 -k 15 -rk -al 1 -na 3 -t 3 -tc "#818181" -e "png"
